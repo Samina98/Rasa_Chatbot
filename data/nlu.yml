@@ -1,0 +1,423 @@
+version: "3.1"
+nlu:
+- intent: verification
+  examples: |
+    - verify
+    - verification
+    - verify as a user
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - have some enqiry
+    - doubt
+    - i have questions
+    - i need help
+    - can you provide me information
+    - show menu
+    - menu
+    - options
+    - choices
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: agree
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yeah
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: network_list
+  examples: |
+    - please provide the network list
+    - can you share the network list
+    - what are the hospitals available
+    - name of networks
+    - give the hospital list
+    - hospitals here
+    - network list
+    - Show me hospital details
+    - Hospital information
+    - I want to see details about a network list
+    - Can you display details of a hospital?
+    - Tell me more about a hospital
+    - I'm interested in hospital details
+    - What can you tell me about a hospital?
+ 
+- intent: hospital_name
+  examples: |
+    - details via hospital name
+    - hospital name
+    - i want to check through hospital name
+    - hospital name: [drishti eye care centre](hospital)
+    - hospital name: [nova medical centers pvt ltd](hospital)
+    - hospital name: [adi bhagavatpada cardiac & dialysis centre](hospital)
+    - hospital name: [clinic-m medical diagnostic](hospital)
+    - hospital name: [pulse healthcare pvt ltd](hospital)
+    - hospital name: [shirbur medical services](hospital)
+    - hospital name: [raheja diagnostics](hospital)
+    - hospital name: [lotus diagnostics centre](hospital)
+    - hospital name: [kap,s diagnoscan & heart centres](hospital)
+    - hospital name: [mohan x-ray lab](hospital)
+    - hospital name: [the apollo clinic](hospital)
+    - hospital name: [dr.versha diagnostic center](hospital)
+    - hospital name: [medicure daiagnostic & research centre](hospital)
+    - hospital name: [sathya diagnostic centre](hospital)
+    - hospital name: [masha medical & diagnostic centre](hospital)
+    - hospital name: [pulse diagostix](hospital)
+    - hospital name: [dr. sangeeta diagnostic centre](hospital)
+    - hospital name: [andheri diagnostic centre](hospital)
+    - hospital name: [sairag hospital](hospital)
+    - hospital name: [vinay nursing](hospital)
+    - hospital name: [kailash ram raheem hospital](hospital)
+    - hospital name: [bhowmik polyclinic and nursing home](hospital)
+    - hospital name: [bhaumik polyclinic and nursing home - agartala](hospital)
+    - hospital name: [ils hospitals](hospital)
+    - hospital name: [alpha hospital](hospital)
+    - hospital name: [aizawl adventist hospital - aizawl](hospital)
+
+# - intent: inform
+#   examples: |
+#     - [Andhra Pradesh](state), [Vijayawada](city)
+#     - [Bangalore](city)
+#     - state- [West Bengal](state), city- [kolkata](city)
+#     - I choose [Bihar](state)
+#     - My state is [Kerala](state)
+#     - My city is [Jharkhand](city)
+#     - I want the list of hospitals in [Andhra Pradesh](state), [Vijayawada](city)
+#     - Provide me details in [Delhi](state), [New Delhi](city)
+#     - [Tamil Nadu](state)
+#     - I prefer [Maharashtra](state)
+#     - [barhampor](city),[orissa](state)
+
+- intent: insurer_id
+  examples: |
+    - My insurer id [6](insurer_id)
+    - I want hospital list under the insurer [7](insurer_id)
+    - Insurer is [5](insurer_id)
+    - [8](insurer_id)
+    - [9](insurer_id)
+    - insurer id [1](insurer_id)
+    - insurer_id [2](insurer_id)
+    - [10](insurer_id)
+  
+
+
+- intent: pin_code
+  examples: |
+    - pin_code
+    - details via pin
+    - pin
+    - through pin_code
+    - My pin is [742101](pin)
+    - [400989](pin)
+    - [560066](pin)
+    - [676456](pin)
+    - pin- [560078](pin)
+    - PIN- [678484](pin)
+    - [500308][{"entity": "pin"}, {"entity": "pin"}]
+    - [765456][{"entity": "pin"}, {"entity": "pin"}]
+
+- intent: otp
+  examples: |
+    - OTP code: [123456](otp)
+    - I have a 6-digit OTP: [654321](otp)
+    - otp: [123456](otp) OTP
+    - Please verify with this OTP: [987654](otp)
+    - My OTP is [345678](otp).
+    - The 6-digit otp: is [234567](otp).
+    - Sent you an OTP: [876543](otp)
+    - otp: [765432](otp)
+    - OTP: [678901](otp)
+    - otp [543210](otp)
+    - otp:
+    - otp: gddsduk
+    - otp: hjergfkejw
+    - otp: help
+    
+
+- intent: download
+  examples: |
+    - i need to download few things
+    - where can i download documents
+    - download
+    - download options give
+    - give download options
+    - where can I get download options.
+    - download pdf of policy
+
+
+- intent: claim_status
+  examples: |
+    - please proceed with my claim status
+    - I want to know my claim status
+    - claim status
+    - reimbursement
+    - reimbursement data
+    - reimburse
+    - claim data
+
+
+- intent: cashless_status
+  examples: |
+    - please proceed with my cashless_status
+    - I want to know cashless_status
+    - cashless status
+    - cashless data
+    - preauth data
+    - preauth status
+    - give my preath data
+
+- intent: claim_intimation
+  examples: |
+    - please proceed with my claim intimation
+    - I want claim intimation
+    - Process claim Intimation
+    - Claim Intimation
+    - i want to intimate claim
+
+- intent: ecard
+  examples: |
+    - please give my ecard
+    - I want ecard
+    - ecard
+    - ecard form
+    - i need my ecard
+    - can you give me the ecard
+    - ecrad required.
+    - help getting ecard
+
+
+
+- intent: branches
+  examples: |
+    - i want to know the branches
+    - what are the branches
+    - branches
+    - give list of branches
+    - list of branches
+    - how many branches
+
+- intent: retail
+  examples: |
+    - retail
+    - i want retail
+    - retail type
+    - type retail
+
+- intent: corporate
+  examples: |
+    - corporate
+    - i want corporate
+    - corporate type
+    - type corporate
+
+- intent: mobile
+  examples: |
+    - mobile number
+    - mobile
+    - [9898989898](mobile)
+    - [8823467819](mobile)
+    - [7689656788](mobile)
+    - My mobile number is [7874567890](mobile)
+    - Contact me at [9876543210](mobile)
+    - mobile number is [9876548907](mobile)
+    - details of mobile is [7835220889](mobile)
+    - [7865457654](mobile)
+    - [67876898769](mobile)
+    - [876578967568](mobile)
+    - [987654210](mobile)
+    - [876547654](mobile)
+    - [87634875410](mobile)
+    - [76546543287](mobile)
+    - [87659812349][{"entity": "mobile"}, {"entity": "mobile"}]
+    - [765439871][{"entity": "mobile"}, {"entity": "mobile"}]
+    - [7654129875][{"entity": "mobile"}, {"entity": "mobile"}]
+
+- intent: dob
+  examples: |
+    - My date of birth is [31/07/962](dob)
+    - [02/04/1988](dob)
+    - My DOB is [17/06/1986](dob)
+    - [27/01/2021](dob)
+    - Born on [26/04/1949](dob)
+    - DOB [01/01/1938](dob)
+    - my birthdate to [27/01/2021](dob)?
+    - [26/04/1949](dob)
+
+- intent: policy_details
+  examples: |
+    - policy details
+    - policy_details
+    - verification via policy details
+
+- intent: policy_number
+  examples: |
+    - policy number: [421500/48/2023/1348](policy_number)
+    - policy number: [351800502210001091](policy_number)
+    - My policy number is [71250034220400000032](policy_number)
+    - Use this policy identifier [612200/34/21/04/00000041](policy_number)
+    - policy number: [510000/48/2023/938](policy_number)
+    - Here is my Insurance policy number [4101221000000069-00](policy_number)
+    - Check this policy no. [412400/48/2023/140](policy_number)
+    - policy number: [421500/48/2023/1348](policy_number)
+    - policy number: [71280334220400000008](policy_number)
+    - My policy code is [4101221000000069-00](policy_number)
+    - The policy ID is [32010334220400000014](policy_number)
+    - This is the ID policy number [670403/34/22/95/00000031](policy_number)
+    - policy number: [0239752505](policy_number)
+    - policy number: [311500/48/2023/3631](policy_number)
+    - The policy no is [4101200100000046-03](policy_number)
+    - It's [713500/34/21/95/00000827](policy_number)
+    - policy number: [H1063176](policy_number)
+    - policy number: [H1006442](id_number) for the ID
+    - policy number: [713500/34/21/95/00000827](policy_number)
+    - policy number: [97000034220400000086](policy_number)
+
+- intent: employee_number
+  examples: |
+    - I need information on employee number [1011211444](employee_number).
+    - employee number: [1021443](employee_number)
+    - employee number- [THHOLD9C213](employee_number)
+    - employee number: [713500/34/21/95/00000827](employee_number)
+    - employee number: [VRCMHYD1452](employee_number)
+    - Employee [EGIL29527](employee_number) needs a record update.
+    - What is the current status of employee number [550593](employee_number)?
+    - employee number: [H0613896](employee_number).
+    - employee number: [LLF CSU 1012](employee_number) currently active?
+    - employee number: [421500-48-2023-1348](employee_number)
+    - employee number: [IIIPL-5591](employee_number).
+    - Give me the information for employee number- [KAL0523195](employee_number).
+    - employee number: [421500/48/2023/1348](employee_number)
+    - employee number: [LPS00262481](employee_number)
+    - employee number: [451443](employee_number)
+    - employee number: [891443](employee_number)
+    - employee number: [6785433](employee_number)
+    - employee number: [454158](employee_number)?
+    - my employee number is [421500/48/2023/1348](employee_number)
+    - employee number: [THHOLD9C213](employee_number)
+    - employee number: [THHOLD978](employee_number)
+
+- intent: employee_details
+  examples: |
+    - employee details
+    - employee_details
+    - verification via employee details
+    
+- intent: corporate_name
+  examples: |
+    - corporate name
+    - corporate name: [STRAND GENOMICS () LTD](corporate_name)
+    - corporate name: [STRAND GENOMICS (P) LTD](corporate_name)
+    - corporate name: [STR GENOMICS (o) LTD](corporate_name)
+    - corporate name: [STRAND GENOMICS LTD (STL)](corporate_name)
+    - corporate name [general insurance agents organisation](corporate_name)
+    - corporate name [APTIV COMPONENTS CORPORATE](corporate_name)
+    - corporate name [TECHNICOLOR INDIA PVT LTD](corporate_name)
+    - corporate name [CITICORP SERVICES INDIA PVT LTD PUNE](corporate_name)
+    - corporate name[CITICORP SERVICES INDIA PVT LTD CHENNAI](corporate_name)
+    - tell me more about corporate name [GOOGLE CORPORATE](corporate_name)
+    - what is corporate name [SCHNEIDER ELECTRIC PRIVATE LIMITED](corporate_name)
+    - details on corporate name: [ZOOM INSURANCE BROKERS PVT LTD](corporate_name)
+    - what services corporate name: [hyundai motor india ltd](corporate_name) 
+    - information on corporate name: [cgi information systems and management consultant pvt ltd-hyd](corporate_name)
+    - what is corporate name: [mobius knowledge services pvt ltd](corporate_name)
+    - give me insights on [minda corporation limited](corporate_name)
+    - i want to know about [r1 rcm global private limited](corporate_name)
+    - tell me about [THG PUBLISHING PRIVATE LIMITED](corporate_name)
+    - info on corporate name: [SBI HEALTH ASSIST- POLICY B](corporate_name).
+    - corporate name: [CERA SANITARYWARE LIMITED](corporate_name) 
+    - corporate name: [STRAND GENOMICS (P) LTD](corporate_name)
+
+- intent: claim_process
+  examples: |
+    - How can I file a claim?
+    - What's the procedure for insurance claims?
+    - Can you explain the claim process to me?
+    - What's involved in filing a claim?
+    - Can you provide an overview of the claim process?
+    - How does the insurance claim process work?
+    - Tell me about the steps for making a claim.
+    - Do you have information on claim procedures?
+    - How can I get reimbursed for an incident?
+    - Explain the process for processing claims.
+    - What are the typical steps in the claim process?
+    - Can you guide me through the claim process?
+
+
+- intent: show_dependent_details
+  examples: |
+    - show_dependent_details {"dependent_name": "DIPAK"}
+    - show dependent details {"dependent_name": "Samina Haque"}
+    - dependent details {"dependent_name": "ravi"}
+    - show_dependent_details [Ananya Chalamella](dependent_name)
+    - show dependent details [Atul](dependent_name)
+    - dependent details [satvik](dependent_name)
+
+- intent: show_hospital_details
+  examples: |
+    - show_hospital_details [Apollo Hospital](hosp_dtl)
+    - show hospital details [Apollo Hospital](hosp_dtl)
+    - show_hospital_details [clinic-m medical diagnostic](hosp_dtl).
+    - show_hospital_details {"hosp_dtl": "XYZ Medical Center"}.
+    - Show information about [City Hospital](hosp_dtl).
+    - show_hospital_details [Manipal hospital](hosp_dtl)?
+    - show_hospital_details [dr. sangeeta diagnostic centre](hosp_dtl)
+    - show_hospital_details [City Hospital](hosp_dtl)
+    - Tell me about [ABC Healthcare](hosp_dtl).
+    - I want to know more about [St. John's Hospital](hosp_dtl)
+    - Can you provide details for [Global Medical Center](hosp_dtl)
+    - What can you tell me about [Sunshine Hospital](hosp_dtl)?
+    - Describe {hosp_dtl": "Health Plus Clinic"}..
+    - Find information about [XYZ Medical Center](hosp_dtl).
+
+- regex: dob
+  examples: |
+
+    - '(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}'
+- regex: mobile
+  examples: |
+    - \d{9,12}

@@ -1,0 +1,211 @@
+version: "3.1"
+
+stories:
+
+- story: Initiate conversation with greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+
+## say goodbye
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+##say bot
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: action_greet
+
+- story: verification via retail->mobile
+  steps:
+  # - intent: claim_intimation
+  - action: action_handle_verification
+  - intent: retail
+  - action: action_handle_retail
+  - intent: mobile
+  - action: action_handle_mobile
+  - action: mobile_form
+  - active_loop: mobile_form
+  - slot_was_set:
+    - requested_slot: mobile
+  - slot_was_set:
+    - mobile: "{mobile}"
+  - slot_was_set:
+    - requested_slot: otp
+  - slot_was_set:
+    - otp: "{otp}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  # - action: action_verify
+
+- story: verification via retail->policy_details
+  steps:
+  # - intent: claim_intimation
+  - action: action_handle_verification
+  - intent: retail
+  - action: action_handle_retail
+  - intent: policy_details
+  - action: action_handle_policy_details
+  - action: policy_details_form
+  - active_loop: policy_details_form
+  - slot_was_set:
+    - requested_slot: dob
+  - slot_was_set:
+    - dob: "{dob}"
+  - slot_was_set:
+    - requested_slot: policy_number
+  - slot_was_set:
+    - policy_number: "{policy_number}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_verify
+  # - intent: otp
+  # - action: action
+
+- story: verification via corporate->mobile
+  steps:
+  # - intent: claim_intimation
+  - action: action_handle_verification
+  - intent: corporate
+  - action: action_handle_corporate
+  - intent: mobile
+  - action: action_handle_mobile
+  - action: mobile_form
+  - active_loop: mobile_form
+  - slot_was_set:
+    - requested_slot: mobile
+  - slot_was_set:
+    - mobile: "{mobile}"
+  - slot_was_set:
+    - requested_slot: otp
+  - slot_was_set:
+    - otp: "{otp}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  # - action: action_verify
+
+
+- story: verification via corporate->employee_details
+  steps:
+  # - intent: claim_intimation
+  - action: action_handle_verification
+  - intent: corporate
+  - action: action_handle_corporate
+  - intent: employee_details
+  - action: action_handle_employee_details
+  - action: employee_details_form
+  - active_loop: employee_details_form
+  - slot_was_set:
+    - requested_slot: dob
+  - slot_was_set:
+    - dob: "{dob}"
+  - slot_was_set:
+    - requested_slot: corporate_name
+  - slot_was_set:
+    - dob: "{corporate_name}"
+  - slot_was_set:
+    - requested_slot: employee_number
+  - slot_was_set:
+    - employee_number: "{employee_number}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_verify
+
+
+
+- story: network list1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: network_list
+  - action: action_handle_verification
+  # - action: action_handle_network_list
+  - intent: hospital_name
+  - action: network_list_form1
+  - active_loop: network_list_form1
+  - slot_was_set:
+    - requested_slot: insurer_id
+  - slot_was_set:
+    - insurer_id: "{insurer_id}"
+  - slot_was_set:
+    - requested_slot: hospital
+  - slot_was_set:
+    - hospital: "{hospital}"
+  - slot_was_set:
+    - requested_slot: pin
+  - slot_was_set:
+    - pin: "{pin}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_fetch_networks
+  - intent: show_hospital_details
+  - action: action_show_hospital_details
+
+
+- story: network list2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: network_list
+  - action: action_handle_verification
+  # - action: action_handle_network_list
+  - intent: pin_code
+  - action: network_list_form2
+  - active_loop: network_list_form2
+  - slot_was_set:
+    - requested_slot: insurer_id
+  - slot_was_set:
+    - insurer_id: "{insurer_id}"
+  - slot_was_set:
+    - requested_slot: pin
+  - slot_was_set:
+    - pin: "{pin}"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_fetch_networks
+  - intent: show_hospital_details
+  - action: action_show_hospital_details
+
+- story: Claim intimation 
+  steps:
+  - intent: claim_intimation
+  - action: action_handle_claim_intimation
+
+- story: Claim Process 
+  steps:
+  - intent: claim_process
+  - action: action_handle_claim_process
+
+- story: Claim Status
+  steps:
+  - intent: claim_status
+  - action: action_handle_verification
+  - intent: show_dependent_details
+  - action: action_show_dependent_details
+
+- story: Cashless Status
+  steps:
+  - intent: cashless_status
+  - action: action_handle_verification
+  - intent: show_dependent_details
+  - action: action_show_dependent_details
+
+
+- story: E-Card 
+  steps:
+  - intent: ecard
+  - action: action_handle_verification
+  - intent: show_dependent_details
+  - action: action_show_dependent_details
+

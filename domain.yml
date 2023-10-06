@@ -1,0 +1,337 @@
+version: '3.1'
+intents:
+- agree
+- bot_challenge
+- claim_intimation
+- corporate
+- corporate_name
+- deny
+- dob
+- employee_details
+- goodbye
+- greet
+- policy_number
+- employee_number
+- mobile
+- network_list
+- download
+- nlu_fallback
+- hospital_name
+- pin_code
+- policy_details
+- retail
+- verification
+- branches
+- claim_status
+- cashless_status
+- ecard
+- otp
+- claim_process
+- show_dependent_details
+- insurer_id
+- show_hospital_details
+
+entities:
+- hospital
+- pin
+- mobile
+- policy_number
+- employee_number
+- dob
+- corporate_name
+- otp
+- dependent_name
+- insurer_id
+- hosp_dtl
+
+forms:
+  network_list_form1:
+    required_slots:
+    - insurer_id
+    - hospital
+    - pin
+    
+  network_list_form2:
+    required_slots:
+    - insurer_id
+    - pin
+
+  mobile_form:
+    required_slots:
+    - mobile
+    - otp
+
+  policy_details_form:
+    required_slots:
+    - dob
+    - policy_number
+
+  employee_details_form:
+    required_slots:
+    - dob
+    - corporate_name
+    - employee_number
+
+slots:
+  verification_status:
+    type: bool
+    initial_value: false
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  xml_response:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+  xml_response_network:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: custom
+  # dependent_name:
+  #   type: any
+  #   influence_conversation: false
+  #   mappings:
+  #   - type: custom
+
+  # hosp_dtl:
+  #   type: any
+  #   influence_conversation: false
+  #   mappings:
+  #   - type: custom
+
+  insurer_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: insurer_id
+
+  insurer:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  pin:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pin
+
+  hospital:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: hospital
+
+  verification_type:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_intent
+      value: mobile
+      intent: mobile
+    - type: from_intent
+      value: policy_details
+      intent: policy_details
+    - type: from_intent
+      value: employee_details
+      intent: employee_details
+
+  option_type:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_intent
+      value: ecard
+      intent: ecard
+    - type: from_intent
+      value: claim_status
+      intent: claim_status
+    - type: from_intent
+      value: cashless_status
+      intent: cashless_status
+    - type: from_intent
+      value: network_list
+      intent: network_list
+
+  policy_type:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_intent
+      value: RTL
+      intent: retail
+    - type: from_intent
+      value: COR
+      intent: corporate
+
+
+  mobile:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: mobile
+      conditions:
+      - active_loop: mobile_form
+        requested_slot: mobile
+
+
+  otp:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: otp
+      conditions:
+      - active_loop: mobile_form
+        requested_slot: mobile
+
+
+  dob:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: dob
+
+  policy_number:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: policy_number
+      conditions:
+      - active_loop: policy_details_form
+        requested_slot: policy_number
+
+  employee_number:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: employee_number
+      conditions:
+      - active_loop: employee_details_form
+        requested_slot: employee_number
+
+  corporate_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: corporate_name
+      conditions:
+      - active_loop: employee_details_form
+        requested_slot: corporate_name
+
+
+responses:
+  utter_greet:
+  - text: Greetings! Kindly make your choice from the available options below.
+    buttons:
+    - title: Network List
+      payload: /network_list
+    - title: Download
+      payload: /download
+    - title: Claim Intimation
+      payload: /claim_intimation
+    - title: Claim Status
+      payload: /claim_status
+    - title: Cashless Status
+      payload: /cashless_status
+    - title: Claim Process
+      payload: /claim-process
+    - title: E-Card
+      payload: /ecard
+    - title: Branches
+      payload: /branches
+
+  utter_verification:
+  - text: Please select from below options for verification.
+    buttons:
+    - title: Retail
+      payload: /retail
+    - title: Corporate
+      payload: /corporate
+  utter_retail:
+  - text: Please select from below retail options for verification.
+    buttons:
+    - title: Mobile Number
+      payload: /mobile
+    - title: Policy Details
+      payload: /policy_details
+  utter_corporate:
+  - text: Please select from below corporate options for verification.
+    buttons:
+    - title: Mobile Number
+      payload: /mobile
+    - title: Employee Details
+      payload: /employee_details
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Bye. To restart type '/restart' or To end the chat type "/stop"
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_agree:
+  - text: Great! I am glad to help, To restart type '/restart' or To end the chat type "/stop".
+  utter_deny:
+  - text: Sorry for the inconvenience, To restart type '/restart' or To end the chat type "/stop".
+  utter_default:
+  - text: I'm sorry, I didn't understand..
+  utter_ask_affirmation:
+  - text: Did you mean?
+  utter_ask_rephrase:
+  - text: Please rephrase again.
+
+actions:
+- utter_greet
+- utter_did_that_help
+- utter_goodbye
+- utter_default
+- utter_ask_affirmation
+- utter_ask_rephrase
+- action_greet
+- action_default_fallback
+- action_handle_network_list
+- validate_network_list_form1
+- validate_network_list_form2
+- action_ask_insurer_id
+- action_ask_pin
+- action_ask_hospital
+- action_fetch_networks
+- action_show_hospital_details
+- action_handle_download
+- action_handle_claim_process
+- action_handle_claim_intimation
+- action_handle_branches
+- action_handle_verification
+- action_show_dependent_details
+- action_handle_corporate
+- action_handle_retail
+- utter_retail
+- utter_corporate
+- action_handle_mobile
+- action_handle_policy_details
+- action_handle_employee_details
+- action_check_agreement
+- action_ask_mobile
+- action_ask_otp
+- action_ask_dob
+- action_ask_policy_number
+- action_ask_corporate_name
+- action_ask_employee_number
+- action_verify
+- validate_mobile_form
+- validate_policy_details_form
+- validate_employee_details_form
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,141 @@
+version: "3.1"
+
+rules:
+
+- rule: Say greetings
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - action: action_greet
+
+- rule: user selects network list via hospital name
+  steps:
+    - intent: hospital_name
+    - action: network_list_form1
+    - active_loop: network_list_form1
+
+- rule: Submit Network list Form1
+  condition:
+  - active_loop: network_list_form1
+  steps:
+  - action: network_list_form1
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_fetch_networks
+
+- rule: user selects network list via pin code
+  steps:
+    - intent: pin_code
+    - action: network_list_form2
+    - active_loop: network_list_form2
+
+- rule: Submit Network list Form2
+  condition:
+  - active_loop: network_list_form2
+  steps:
+  - action: network_list_form2
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_fetch_networks
+
+- rule: user selects Download
+  steps:
+    - intent: download
+    - action: action_handle_download
+    # - action: action_open_url
+    # - action: utter_greet
+
+- rule: user selects branches
+  steps:
+    - intent: branches
+    - action: action_handle_branches
+    # - action: action_open_url
+    # - action: utter_greet
+
+- rule: user selects Mobile Verification
+  condition:
+  # this condition allows stories to handle form switching
+  - active_loop: null
+  steps:
+    - intent: mobile
+    - action: action_handle_mobile
+    - action: mobile_form
+    - active_loop: mobile_form
+
+- rule: Submit mobile form
+  condition:
+  - slot_was_set:
+    - verification_type: mobile
+  - active_loop: mobile_form
+  steps:
+  - action: mobile_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: action_verify
+  # - action: utter_confirm_mobile
+
+- rule: user selects Policy Verification
+  condition:
+  # this condition allows stories to handle form switching
+  - active_loop: null
+  steps:
+    - intent: policy_details
+    - action: action_handle_policy_details
+    - action: policy_details_form
+    - active_loop: policy_details_form
+
+- rule: Submit policy details form
+  condition:
+  - slot_was_set:
+    - verification_type: policy_details
+  - active_loop: policy_details_form
+  steps:
+  - action: policy_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_verify
+  # - action: utter_confirm_policy_details
+
+- rule: Show hospital details
+  steps:
+    - intent: show_hospital_details
+      entities:
+        - hosp_dtl
+    - action: action_show_hospital_details
+    
+- rule: user selects Employee Verification
+  condition:
+  # this condition allows stories to handle form switching
+  - active_loop: null
+  steps:
+    - intent: employee_details
+    - action: action_handle_employee_details
+    - action: employee_details_form
+    - active_loop: employee_details_form
+
+- rule: Submit employee details form
+  condition:
+  - slot_was_set:
+    - verification_type: employee_details
+  - active_loop: employee_details_form
+  steps:
+  - action: employee_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_verify
+ 
