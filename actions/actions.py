@@ -235,7 +235,7 @@ class ActionFetchNetworks(Action):
         insurer_id = tracker.get_slot("insurer_id")
         pin = tracker.get_slot("pin")
         hospital=tracker.get_slot("hospital")
-        api_url = "https://testtips.vidalhealthtpa.com:7443/vidalwhatsappservice/WhatAppChatbot/hospitalDetails"
+        api_url = "add url for api"
         # Define the payload to send to the API
         # Define headers with the required parameters
         payload = {}
@@ -243,7 +243,7 @@ class ActionFetchNetworks(Action):
             headers = {
             'insId': insurer_id,
             'pinCode': pin,
-            'Authorization': 'Basic VmlkYWxCb3Q6Qm90VWF0JDMxMg==',
+            'Authorization': '',
             'hospitalName': '' }
 
             response = requests.request("POST", api_url, headers=headers, data=payload)
@@ -602,13 +602,13 @@ class ActionAskOtp(Action):
             dispatcher.utter_message(text="Mobile number or policy type is not provided.")
             return [Restarted()]
 
-        url = "https://testtips.vidalhealthtpa.com:7443/vidalwhatsappservice/WhatAppChatbot/validateMobile"
+        url = "add url for api"
 
         payload = {}
         headers = {
         'mobileNo': mobile_number,
         'policyType': policy_type,
-        'Authorization': 'Basic VmlkYWxCb3Q6Qm90VWF0JDMxMg=='
+        'Authorization': ''
         }
 
 # print(response.text)
@@ -680,14 +680,14 @@ class ValidateMobileForm(FormValidationAction):
         policy_type = tracker.get_slot("policy_type")
 
         # Call another API to verify the OTP
-        otp_url = "https://testtips.vidalhealthtpa.com:7443/vidalwhatsappservice/WhatAppChatbot/validateMobileOTP"
+        otp_url = "add url for api"
 
         payload = {}
         headers = {
         'mobileNo': mobile_number,
         'Otp': otp,
         'policyType': policy_type,
-        'Authorization': 'Basic VmlkYWxCb3Q6Qm90VWF0JDMxMg=='
+        'Authorization': ''
         }
         # dispatcher.utter_message(text=f"url:\n\n{otp_url}, payload:\n\n{headers}")
 
@@ -1034,7 +1034,7 @@ class ActionVerify(Action):
             policy_type = tracker.get_slot("policy_type")
             policy_number = tracker.get_slot("policy_number")
             dob = tracker.get_slot("dob")
-            url = "https://testtips.vidalhealthtpa.com:7443/vidalwhatsappservice/WhatAppChatbot/verificationDtls"
+            url = "add url for api"
 
             payload = {}
             headers = {
@@ -1043,7 +1043,7 @@ class ActionVerify(Action):
             'empNO': '',
             'corpName': '',
             'dob': dob,
-            'Authorization': 'Basic VmlkYWxCb3Q6Qm90VWF0JDMxMg=='
+            'Authorization': ''
             }
 
             response = requests.request("POST", url, headers=headers, data=payload)
@@ -1194,7 +1194,7 @@ class ActionVerify(Action):
             corporate_name = tracker.get_slot("corporate_name")
             employee_number = tracker.get_slot("employee_number")
             dob = tracker.get_slot("dob")
-            url = "https://testtips.vidalhealthtpa.com:7443/vidalwhatsappservice/WhatAppChatbot/verificationDtls"
+            url = "add url for api"
 
             payload = {}
             headers = {
@@ -1203,7 +1203,7 @@ class ActionVerify(Action):
             'empNO': employee_number,
             'corpName': corporate_name,
             'dob': dob,
-            'Authorization': 'Basic VmlkYWxCb3Q6Qm90VWF0JDMxMg=='
+            'Authorization': ''
             }
 
             response = requests.request("POST", url, headers=headers, data=payload)
